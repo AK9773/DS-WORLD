@@ -248,9 +248,11 @@ main {
   color: #f9fafb;
 }
 
-/* Service-preview: image on top, content below */
+/* Service-preview: image on top, content below - responsive columns */
 .service-preview .cards {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 .service-card {
@@ -618,16 +620,43 @@ main {
     padding: 12px 16px;
   }
 
+  /* Stack navbar content so links appear below the toggle */
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   #menu-toggle {
     display: block;
   }
 
+  /* Ensure logo stays left and toggle sits on the right */
+  .nav-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .nav-left .nav-logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  /* keep nav-links below the header when toggled */
   .nav-links {
     width: 100%;
     flex-direction: column;
     gap: 4px;
     margin-top: 8px;
     display: none;
+    order: 3;
+  }
+
+  #menu-toggle {
+    order: 2;
   }
 
   .nav-links.show {
